@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 TextTheme textTheme = TextTheme(
@@ -44,4 +45,13 @@ ButtonStyle btnStyle(Color txtColor, Color bgColor ) {
       foregroundColor:MaterialStateProperty.all(txtColor) ,
       backgroundColor:MaterialStateProperty.all(bgColor)
   );
+}
+
+pickImage(ImageSource source) async{
+  final ImagePicker imagePicker =ImagePicker();
+  XFile? _file = await imagePicker.pickImage(source: source);
+  if(_file!=null){
+    return await _file.readAsBytes();
+  }
+  print("Image Not Selected");
 }

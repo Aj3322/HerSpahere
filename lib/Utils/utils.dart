@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 TextTheme textTheme = TextTheme(
   headline1: GoogleFonts.roboto(
-      fontSize: 48.sp, fontWeight: FontWeight.w700, color: Colors.black),
+      fontSize: 48.sp, fontWeight: FontWeight.w700, color: Colors.white),
   headline2: GoogleFonts.poppins(
       fontSize: 58, fontWeight: FontWeight.w300, letterSpacing: -0.5),
   headline3: GoogleFonts.poppins(fontSize: 46, fontWeight: FontWeight.w400),
@@ -15,7 +15,7 @@ TextTheme textTheme = TextTheme(
   headline6: GoogleFonts.poppins(
       fontSize: 19, fontWeight: FontWeight.w500, letterSpacing: 0.15),
   subtitle1: GoogleFonts.poppins(
-      fontSize: 16.sp, fontWeight: FontWeight.w500, color: Colors.black),
+      fontSize: 16.sp, fontWeight: FontWeight.w500, color: Colors.white),
   subtitle2: GoogleFonts.poppins(
       fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.1),
   bodyText1: GoogleFonts.poppins(

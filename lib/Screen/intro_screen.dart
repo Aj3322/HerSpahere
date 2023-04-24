@@ -16,6 +16,8 @@ class IntroScreen extends StatelessWidget {
             height: double.infinity,
             color: const Color.fromARGB(255, 255, 58, 84),
             child: Column(children: [
+              Text('HerSphere',style: textTheme.headline1,),
+             SizedBox(height: 40,),
               Image.asset('assets/img/welcome.png'),
               SizedBox(
                 height: 10.h,

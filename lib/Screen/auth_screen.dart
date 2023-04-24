@@ -1,10 +1,7 @@
-
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:untitled1/Screen/Profile_screen.dart';
+import 'package:untitled1/Screen/home_screen.dart';
 import 'package:untitled1/Utils/utils.dart';
 import 'package:untitled1/widgets/login_form.dart';
 import 'package:untitled1/widgets/sign_up_form.dart';
@@ -87,11 +84,11 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                 left: 0,
                 right: _isShowSignUp?-_size.width*0.06:_size.width*0.06,
                 duration: defaultDuration,
-                child: CircleAvatar(
+                child: CircleAvatar(backgroundColor: Colors.white,
                   radius: 35,
                   child: AnimatedSwitcher(
                     duration: defaultDuration,
-                    child:_isShowSignUp? SvgPicture.asset('assets/img/aj2.svg'):SvgPicture.asset('assets/img/aj.svg'),
+                    child:Image.asset('assets/img/attachment_98127672 1.png',color: Colors.red,),
                   ),
                 ),
               ),
@@ -128,7 +125,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: _size.width*0.03),
                           width: 160,
-                          child: const Text("LOG IN",),
+                          child: const Text("LOG IN",style: TextStyle(color: Colors.white),),
                         ),
                       ),
                     ),
@@ -152,7 +149,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                       child: InkWell(
                         onTap: (){
                           if(_isShowSignUp){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyProfile()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HomeScreen()));
                           }else{
                             update();
                           }

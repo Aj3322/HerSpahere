@@ -16,7 +16,7 @@ class _MyProfileState extends State<MyProfile> {
         title: const Text('Profile',style: TextStyle(color: Colors.black),),
         leading:IconButton(onPressed: (){Navigator.of(context).pop();}, icon: const Icon(Icons.arrow_back_ios,color:Colors.black,)),
         actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.logout,color:Colors.black,)),
+          IconButton(onPressed: (){Navigator.of(context).pop();}, icon: const Icon(Icons.logout,color:Colors.black,)),
         ],
       ),
       body: Column(
@@ -28,7 +28,7 @@ class _MyProfileState extends State<MyProfile> {
               SizedBox(
                 width:_size.width ,
                 child: const CircleAvatar(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.redAccent,
                   radius: 52,
                 ),
               ),

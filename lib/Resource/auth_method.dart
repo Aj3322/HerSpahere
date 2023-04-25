@@ -61,19 +61,19 @@ class FirestoreMethods {
         required String email,
         required String password,
         required String username,
-         String bio='',
+        required Uint8List file,
       }) async{
     String res ="Some error occurred" ;
     final time = DateTime.now().millisecondsSinceEpoch.toString();
     try {
-      if (email.isNotEmpty && password.isNotEmpty  ) {
+      if (email.isNotEmpty && password.isNotEmpty ) {
         UserCredential credential = await auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
-        // String photoUrl = await StorageMethod().uploadImageToStorage(
-        //     'profilePic', file, false);
+        String photoUrl = await StorageMethod().uploadImageToStorage(
+            'profilePic', file, false);
 
-       ChatUser users = ChatUser( about: bio, name: username, createdAt: time, isOnline: false, id: credential.user!.uid, lastActive: '', email: email, pushToken: '');
+       ChatUser users = ChatUser(image: photoUrl??'Ajay', about: '', name: username, createdAt: time, isOnline: false, id: credential.user!.uid, lastActive: '', email: email, pushToken: '');
 
         await firestore.collection('users').doc(credential.user!.uid).set(users.toJson());
         res = "success";
@@ -214,7 +214,7 @@ class FirestoreMethods {
         name: user.displayName.toString(),
         email: user.email.toString(),
         about: "Hey, I'm using We Chat!",
-
+        image: user.photoURL.toString(),
         createdAt: time,
         isOnline: false,
         lastActive: time,
@@ -242,11 +242,11 @@ class FirestoreMethods {
 
     return firestore
         .collection('users')
-        .where('id',
-        whereIn: userIds.isEmpty
-            ? ['']
-            : userIds) //because empty list throws an error
-    // .where('id', isNotEqualTo: user.uid)
+        // .where('id',
+        // whereIn: userIds.isEmpty
+        //     ? ['']
+        //     : userIds) //because empty list throws an error
+    .where('id', isNotEqualTo: user.uid)
         .snapshots();
   }
 
@@ -269,29 +269,29 @@ class FirestoreMethods {
     });
   }
 
-  // // update profile picture of user
-  // Future<void> updateProfilePicture(File file) async {
-  //   //getting image file extension
-  //   final ext = file.path.split('.').last;
-  //   log('Extension: $ext');
-  //
-  //   //storage file ref with path
-  //   final ref = storage.ref().child('profile_pictures/${user.uid}.$ext');
-  //
-  //   //uploading image
-  //   await ref
-  //       .putFile(file, SettableMetadata(contentType: 'image/$ext'))
-  //       .then((p0) {
-  //     log('Data Transferred: ${p0.bytesTransferred / 1000} kb');
-  //   });
-  //
-  //   //updating image in firestore database
-  //   me.image = await ref.getDownloadURL();
-  //   await firestore
-  //       .collection('users')
-  //       .doc(user.uid)
-  //       .update({'image': me.image});
-  // }
+  // update profile picture of user
+  Future<void> updateProfilePicture(File file) async {
+    //getting image file extension
+    final ext = file.path.split('.').last;
+    log('Extension: $ext');
+
+    //storage file ref with path
+    final ref = storage.ref().child('profile_pictures/${user.uid}.$ext');
+
+    //uploading image
+    await ref
+        .putFile(file, SettableMetadata(contentType: 'image/$ext'))
+        .then((p0) {
+      log('Data Transferred: ${p0.bytesTransferred / 1000} kb');
+    });
+
+    //updating image in firestore database
+    me.image = await ref.getDownloadURL();
+    await firestore
+        .collection('users')
+        .doc(user.uid)
+        .update({'image': me.image});
+  }
 
   // for getting specific user info
   Stream<QuerySnapshot<Map<String, dynamic>>> getUserInfo(

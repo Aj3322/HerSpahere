@@ -61,7 +61,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
        email: _emailControlerSign.text,
        password: _passControlerSing.text,
        username: _userNameControler.text,
-       bio: _bioControler.text,
+       file: _image!,
      );
 
      print(res.toString());

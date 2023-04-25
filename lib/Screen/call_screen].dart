@@ -75,7 +75,7 @@ class _ConsultanceState extends State<Consultance> {
                     ),
                     const Text('Dr. Ritu Gupta\nPhone: 098107 38167',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 19)),
+                        style: TextStyle(fontSize: 15)),
                     IconButton(onPressed: () {}, icon: Icon(Icons.call))
                   ],
                 ),
@@ -94,7 +94,7 @@ class _ConsultanceState extends State<Consultance> {
                     ),
                     const Text('Dr Pujas Clinic\nPhone:  098994 16040',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 19)),
+                        style: TextStyle(fontSize: 15)),
                     IconButton(onPressed: () {}, icon: Icon(Icons.call))
                   ],
                 ),
@@ -113,7 +113,7 @@ class _ConsultanceState extends State<Consultance> {
                     ),
                     const Text('Dr Priya Agarwal\nPhone: 099909 53485',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 19)),
+                        style: TextStyle(fontSize: 15)),
                     IconButton(onPressed: () {}, icon: Icon(Icons.call))
                   ],
                 ),
@@ -132,7 +132,7 @@ class _ConsultanceState extends State<Consultance> {
                     ),
                     const Text('Dr Pooja Choudhary\nPhone: 093138 78998',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 19)),
+                        style: TextStyle(fontSize: 15)),
                     IconButton(onPressed: () {}, icon: Icon(Icons.call))
                   ],
                 ),
@@ -151,7 +151,7 @@ class _ConsultanceState extends State<Consultance> {
                     ),
                     const Text('Dr Mayur Dass\nPhone: 099728 99728',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 19)),
+                        style: TextStyle(fontSize: 15)),
                     IconButton(onPressed: () {}, icon: Icon(Icons.call))
                   ],
                 ),

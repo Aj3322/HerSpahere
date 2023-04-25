@@ -53,7 +53,6 @@ class _MyProfileState extends State<MyProfile> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 255, 58, 84),
         title: const Text('Profile',style: TextStyle(color: Colors.black),),
-        leading:IconButton(onPressed: (){Navigator.of(context).pop();}, icon: const Icon(Icons.arrow_back_ios,color:Colors.black,)),
         actions: [
           IconButton(onPressed: (){FirebaseAuth.instance.signOut();
           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const AuthScreen()));}, icon: const Icon(Icons.logout,color:Colors.black,)),

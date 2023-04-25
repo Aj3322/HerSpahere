@@ -96,7 +96,7 @@ class _CommunePageState extends State<CommunePage> {
                             Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Consultance()));
                           },
                           child: Text(
-                            'Call',
+                            'Consultance',
                             style: TextStyle(fontSize: 20, color: Colors.black54),
                           ),
                         ),

@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled1/Screen/home_screen.dart';
 import 'Screen/intro_screen.dart';
 import 'Utils/utils.dart';
 import 'firebase_options.dart';
@@ -61,7 +63,24 @@ class MyApp extends StatelessWidget {
           //         vertical: defpaultPadding * 1.2, horizontal: defpaultPadding),
           //   ),
           // ),
-          home: const IntroScreen(),
+          home:StreamBuilder(
+            stream:FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot){
+              if(snapshot.connectionState==ConnectionState.active){
+                if(snapshot.hasData){
+                  return const HomeScreen();
+                }else if(snapshot.hasError){
+                  return Center(child: Text('${snapshot.error}'),);
+
+                }
+              }else if(snapshot.connectionState==ConnectionState.waiting){
+                return const Center(child: CircularProgressIndicator(color: primaryColor,),);
+              }
+              return const IntroScreen();
+
+            },
+          ),
+          // const IntroScreen(),
         );
       },
 

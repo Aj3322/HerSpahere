@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:untitled1/Screen/home_screen.dart';
 import 'package:untitled1/Utils/utils.dart';
-import 'package:untitled1/widgets/login_form.dart';
-import 'package:untitled1/widgets/sign_up_form.dart';
+
 
 import '../Resource/auth_method.dart';
-import '../widgets/Text_input.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -123,7 +121,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
         animation: _animationController,
         builder: (context,_) {
 
-          return Stack(
+          return isLoading? Center(child: CircularProgressIndicator(),): Stack(
             children: [
               AnimatedPositioned(
                 left:_isShowSignUp? -_size.width*0.76:0,
@@ -256,13 +254,14 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                   left: 0,
                   right: _isShowSignUp?-_size.width*0.06:_size.width*0.06,
                   duration: defaultDuration,
-                  child: CircleAvatar(backgroundColor: Colors.white,
-                    radius: 35,
-                    child: AnimatedSwitcher(
-                      duration: defaultDuration,
-                      child:Image.asset('assets/img/attachment_98127672 1.png',color: Colors.red,),
+                  child:_image==null? InkWell(
+                    onTap: selectImage,
+                    child: CircleAvatar(backgroundColor: Colors.white,
+                      radius: 35,
+                      child: Image.asset('assets/img/attachment_98127672 1.png',color: Colors.red,),
                     ),
-                  ),),
+                  ):CircleAvatar(radius: 35,
+                    backgroundImage: MemoryImage(_image!),)),
 
 
                       // Positioned(
@@ -297,7 +296,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                           if(_isShowSignUp){
                             update();
                           }else{
-                            //log in
+                            loginUser;
                           }
                         },
                         child: Container(
@@ -305,7 +304,8 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                           width: 160,
                           child: InkWell(
                             onTap: loginUser,
-                              child: const Text("LOG IN",style: TextStyle(color: Colors.white),)),
+                            child: const Text("LOG IN",style: TextStyle(color: Colors.white),),
+                          ),
                         ),
                       ),
                     ),
@@ -329,8 +329,10 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                       child: InkWell(
                         onTap: (){
                           if(_isShowSignUp){
+                            if(_passControlerSing.text==_passControlerCon.text){
                             signupUser();
-                            print('click on Ajay');
+                            }else{
+                          }
                           }else{
                             update();
                           }

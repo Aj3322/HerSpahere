@@ -66,7 +66,7 @@ class FirestoreMethods {
     String res ="Some error occurred" ;
     final time = DateTime.now().millisecondsSinceEpoch.toString();
     try {
-      if (email.isNotEmpty && password.isNotEmpty ) {
+      if (email.isNotEmpty || password.isNotEmpty ) {
         UserCredential credential = await auth.createUserWithEmailAndPassword(
             email: email, password: password);
 

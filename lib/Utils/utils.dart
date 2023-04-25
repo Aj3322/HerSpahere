@@ -34,8 +34,8 @@ TextTheme textTheme = TextTheme(
   overline: GoogleFonts.poppins(
       fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
 );
-const Color login_bg = Color(0xFFFF3A54);
-const Color signup_bg = Color(0xFF000A54);
+const Color login_bg = Color(0xFFFFB6C1);
+const Color signup_bg = Color(0xFF2F82FF);
 const mobileBackgroundColor = Color.fromRGBO(248, 241, 241, 1.0);
 const webBackgroundColor = Color.fromRGBO(18, 18, 18, 1);
 const mobileSearchColor = Color.fromRGBO(38, 38, 38, 1);

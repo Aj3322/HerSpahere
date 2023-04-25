@@ -14,7 +14,7 @@ class IntroScreen extends StatelessWidget {
             padding:const EdgeInsets.all(20),
             width: double.infinity,
             height: double.infinity,
-            color: const Color.fromARGB(255, 255, 58, 84),
+            color: login_bg,
             child: Column(children: [
               Text('HerSphere',style: textTheme.headline1,),
              SizedBox(height: 40,),
